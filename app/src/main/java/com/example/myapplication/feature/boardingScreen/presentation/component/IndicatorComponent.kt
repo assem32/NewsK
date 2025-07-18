@@ -1,4 +1,4 @@
-package com.example.myapplication.boardingScreen.presentation.component
+package com.example.myapplication.feature.boardingScreen.presentation.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

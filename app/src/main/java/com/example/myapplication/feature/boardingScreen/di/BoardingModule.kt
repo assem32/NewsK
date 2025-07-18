@@ -1,4 +1,4 @@
-package com.example.myapplication.boardingScreen.di
+package com.example.myapplication.feature.boardingScreen.di
 
 import dagger.Module
 import dagger.hilt.InstallIn

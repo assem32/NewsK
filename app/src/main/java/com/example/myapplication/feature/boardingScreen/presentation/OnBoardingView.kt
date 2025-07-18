@@ -1,4 +1,4 @@
-package com.example.myapplication.boardingScreen.presentation
+package com.example.myapplication.feature.boardingScreen.presentation
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,16 +19,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.myapplication.boardingScreen.domain.entity.pages
-import com.example.myapplication.boardingScreen.presentation.component.IndicatorComponent
-import com.example.myapplication.boardingScreen.presentation.component.OnBoardingItem
+import androidx.navigation.NavController
+import com.example.myapplication.feature.boardingScreen.domain.entity.pages
+import com.example.myapplication.feature.boardingScreen.presentation.component.IndicatorComponent
+import com.example.myapplication.feature.boardingScreen.presentation.component.OnBoardingItem
 import com.example.myapplication.core.Dimies
 import com.example.myapplication.core.commonComposable.NewsButton
+import com.example.myapplication.core.navGraph.Route
 import com.example.myapplication.ui.theme.MyApplicationTheme
 import kotlinx.coroutines.launch
 
 @Composable
-fun BoardingScreen(modifier: Modifier = Modifier) {
+fun BoardingScreen(modifier: Modifier = Modifier,navController: NavController) {
     Column(modifier = modifier.fillMaxSize()) {
         val pageState = rememberPagerState(initialPage = 0) { pages.size }
         val animation = rememberCoroutineScope()
@@ -49,7 +51,7 @@ fun BoardingScreen(modifier: Modifier = Modifier) {
         Spacer(modifier.weight(1f))
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = Dimies.meduimPaddin)) {
+            .padding(horizontal = Dimies.mediumPadding)) {
             IndicatorComponent(
                 modifier = Modifier.width(52.dp),
                 pageSize = pages.size,
@@ -66,6 +68,7 @@ fun BoardingScreen(modifier: Modifier = Modifier) {
                 Spacer(modifier.width(10.dp))
                 NewsButton(if (pageState.currentPage + 1 == pages.size) "Keep Going" else "Next") {
                     if (pageState.currentPage + 1 == pages.size) {
+                        navController.navigate(Route.homeScreen)
 
                     } else {
                         animation.launch {
@@ -84,9 +87,9 @@ fun BoardingScreen(modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true)
 @Composable
-fun OnBoardingView() {
+fun OnBoardingScreenPreview() {
     MyApplicationTheme{
-        BoardingScreen()
+//        BoardingScreen()
     }
 
 }
