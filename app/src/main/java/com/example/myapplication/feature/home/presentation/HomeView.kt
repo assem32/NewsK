@@ -12,13 +12,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.example.myapplication.R
 import com.example.myapplication.core.BaseStates
 import com.example.myapplication.feature.home.presentation.component.NewsList
 
 
 @Composable
-fun HomeView( homeViewModel: HomeViewModel = hiltViewModel() ){
+fun HomeView( homeViewModel: HomeViewModel = hiltViewModel(),navController: NavController ){
     LaunchedEffect(Unit) {
         homeViewModel.getNews()
     }
@@ -34,14 +35,14 @@ fun HomeView( homeViewModel: HomeViewModel = hiltViewModel() ){
             }
             is BaseStates.Success -> {
                 val data = state.data
-                NewsList(data)
+                NewsList(data,navController)
             }
 
             is BaseStates.Error -> {
                 val message = state.message
                 Text(text = message)
             }
-             null -> ""
+             null -> "no"
         }
 
     }

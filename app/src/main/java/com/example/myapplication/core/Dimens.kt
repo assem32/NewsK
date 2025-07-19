@@ -2,7 +2,7 @@ package com.example.myapplication.core
 
 import androidx.compose.ui.unit.dp
 
-object Dimies {
+object Dimens {
 
     val smallPadding = 24.dp
     val mediumPadding = 30.dp

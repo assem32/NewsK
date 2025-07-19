@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.sp
 
 import com.example.myapplication.feature.boardingScreen.domain.entity.OnBoardingEntity
 import com.example.myapplication.feature.boardingScreen.domain.entity.pages
-import com.example.myapplication.core.Dimies
+import com.example.myapplication.core.Dimens
 import com.example.myapplication.R
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
@@ -36,16 +36,16 @@ fun OnBoardingItem(
 
             contentScale = ContentScale.Crop
         )
-        Spacer(Modifier.height(Dimies.smallPadding))
+        Spacer(Modifier.height(Dimens.smallPadding))
         Text(
             text = onBoardingEntity.title,
             style = TextStyle(fontSize = 10.sp, color = colorResource(R.color.display_small)),
-            modifier = Modifier.padding(horizontal = Dimies.smallPadding)
+            modifier = Modifier.padding(horizontal = Dimens.smallPadding)
         )
         Text(
             text = onBoardingEntity.description,
             style = TextStyle(fontSize = 16.sp, color = colorResource(R.color.text_medium)),
-            modifier = Modifier.padding(horizontal = Dimies.smallPadding)
+            modifier = Modifier.padding(horizontal = Dimens.smallPadding)
         )
 
     }

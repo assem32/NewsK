@@ -23,7 +23,7 @@ import androidx.navigation.NavController
 import com.example.myapplication.feature.boardingScreen.domain.entity.pages
 import com.example.myapplication.feature.boardingScreen.presentation.component.IndicatorComponent
 import com.example.myapplication.feature.boardingScreen.presentation.component.OnBoardingItem
-import com.example.myapplication.core.Dimies
+import com.example.myapplication.core.Dimens
 import com.example.myapplication.core.commonComposable.NewsButton
 import com.example.myapplication.core.navGraph.Route
 import com.example.myapplication.ui.theme.MyApplicationTheme
@@ -51,7 +51,7 @@ fun BoardingScreen(modifier: Modifier = Modifier,navController: NavController) {
         Spacer(modifier.weight(1f))
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = Dimies.smallPadding)) {
+            .padding(horizontal = Dimens.smallPadding)) {
             IndicatorComponent(
                 modifier = Modifier.width(52.dp),
                 pageSize = pages.size,

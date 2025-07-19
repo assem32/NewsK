@@ -16,4 +16,5 @@ package com.example.myapplication.core.navGraph
 object Route {
     val onBoardingScreenNav = "onBoardingScreen"
     val homeScreen="homeScreen"
+    val detailsScreen = "detailsScreen"
 }
