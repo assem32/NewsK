@@ -12,7 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.myapplication.boardingScreen.domain.entity.pages
+import com.example.myapplication.feature.boardingScreen.domain.entity.pages
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
 @Composable
@@ -36,7 +36,7 @@ fun NewsButton(
 
 @Preview(showBackground = true)
 @Composable
-fun OnBoardingView() {
+fun ButtonView() {
     MyApplicationTheme {
         NewsButton(text = "Next", onClick = {})
     }

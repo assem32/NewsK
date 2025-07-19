@@ -1,4 +1,4 @@
-package com.example.myapplication.boardingScreen.domain.entity
+package com.example.myapplication.feature.boardingScreen.domain.entity
 
 import androidx.annotation.DrawableRes
 import com.example.myapplication.R
