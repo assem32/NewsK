@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.myapplication.core.BaseStates
 import com.example.myapplication.feature.home.domain.entity.NewsItemEntity
 import com.example.myapplication.feature.home.domain.usecase.GetNews
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,11 +16,13 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(val getNews: GetNews) : ViewModel() {
 
-    private val _newsListMutableLiveData = MutableLiveData<List<NewsItemEntity>>()
-    val newsListLiveData :LiveData<List<NewsItemEntity>> = _newsListMutableLiveData
+    private val _newsListMutableLiveData = MutableLiveData<BaseStates<List<NewsItemEntity>>>()
+    val newsListLiveData :LiveData<BaseStates<List<NewsItemEntity>>> = _newsListMutableLiveData
 
     fun getNews(){
         viewModelScope.launch {
+            _newsListMutableLiveData.value = BaseStates.Loading
+
             _newsListMutableLiveData.value = getNews.invoke()
         }
     }
