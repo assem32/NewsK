@@ -6,8 +6,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.myapplication.feature.MainLayout
 import com.example.myapplication.feature.boardingScreen.presentation.BoardingScreen
 import com.example.myapplication.feature.details.DetailsView
+import com.example.myapplication.feature.details.WebViewScreen
 import com.example.myapplication.feature.home.domain.entity.NewsItemEntity
 import com.example.myapplication.feature.home.presentation.HomeView
 import com.google.gson.Gson
@@ -24,7 +26,7 @@ fun NavGraph(
             BoardingScreen(navController =  navController)
         }
         composable (Route.homeScreen){
-            HomeView(navController = navController)
+            MainLayout(navController)
         }
         composable (Route.detailsScreen+"/{newsJson}",
                 arguments = listOf(navArgument("newsJson") { type = NavType.StringType })){
@@ -32,7 +34,14 @@ fun NavGraph(
             val json = backStackEntry.arguments?.getString("newsJson")
             val newsEntity = Gson().fromJson(json, NewsItemEntity::class.java)
 
-            DetailsView(newsEntity)
+            DetailsView(newsEntity, navController = navController)
+        }
+        composable(
+            "webview?url={url}",
+            arguments = listOf(navArgument("url") { defaultValue = "" })
+        ) { backStackEntry ->
+            val url = backStackEntry.arguments?.getString("url") ?: ""
+            WebViewScreen(url = url)
         }
     }
 

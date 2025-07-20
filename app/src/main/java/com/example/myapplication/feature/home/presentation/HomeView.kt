@@ -19,7 +19,7 @@ import com.example.myapplication.feature.home.presentation.component.NewsList
 
 
 @Composable
-fun HomeView( homeViewModel: HomeViewModel = hiltViewModel(),navController: NavController ){
+fun HomeView(modifier: Modifier=Modifier, homeViewModel: HomeViewModel = hiltViewModel(),navController: NavController ){
     LaunchedEffect(Unit) {
         homeViewModel.getNews()
     }

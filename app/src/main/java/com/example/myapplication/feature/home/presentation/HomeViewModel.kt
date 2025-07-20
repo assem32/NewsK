@@ -1,7 +1,10 @@
 package com.example.myapplication.feature.home.presentation
 
 import android.util.Log
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.compose.runtime.*
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,5 +28,17 @@ class HomeViewModel @Inject constructor(val getNews: GetNews) : ViewModel() {
 
             _newsListMutableLiveData.value = getNews.invoke()
         }
+    }
+
+    @Composable
+    fun openWebView(url:String){
+        AndroidView(
+            factory = {
+                WebView(it).apply {
+                    webViewClient = WebViewClient()
+                    loadUrl(url)
+                }
+            }
+        )
     }
 }

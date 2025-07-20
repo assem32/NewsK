@@ -18,7 +18,9 @@ fun Article.toNewsItem(): NewsItemEntity {
         title= title,
         source = source.name,
         imageUrl = urlToImage ?: "",
-        publishedAt = publishedAt
+        publishedAt = publishedAt,
+        url = url
+
     )
 }
 

@@ -102,7 +102,8 @@ fun NewsItemPreview() {
                 source =  "CNN",
                 title = "Global Markets Rally as Inflation Slows Down",
                 publishedAt = "2025-07-17T08:30:00Z",
-                imageUrl = ""
+                imageUrl = "",
+                url = ""
 
             ),
             navController = navController

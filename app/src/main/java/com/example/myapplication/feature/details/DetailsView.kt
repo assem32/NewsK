@@ -1,5 +1,6 @@
 package com.example.myapplication.feature.details
 
+import android.net.Uri
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -23,14 +24,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import coil3.compose.AsyncImage
 import com.example.myapplication.R
 import com.example.myapplication.core.Dimens
 import com.example.myapplication.feature.home.domain.entity.NewsItemEntity
+import com.example.myapplication.feature.home.presentation.HomeViewModel
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
 @Composable
-fun DetailsView(newsItemEntity: NewsItemEntity){
+fun DetailsView(newsItemEntity: NewsItemEntity, homeView :HomeViewModel = hiltViewModel(),navController: NavController){
     Column(modifier = Modifier.padding(Dimens.smallPadding)) {
         Row (modifier = Modifier.fillMaxWidth()){
             IconButton(
@@ -63,7 +67,8 @@ fun DetailsView(newsItemEntity: NewsItemEntity){
             }
             IconButton(
                 onClick = {
-
+                    val encodedUrl = Uri.encode(newsItemEntity.url)
+                    navController.navigate("webview?url=$encodedUrl")
                 }
             ) {
                 Icon(
@@ -85,16 +90,16 @@ fun DetailsView(newsItemEntity: NewsItemEntity){
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun DetailsViewPreview() {
-    MyApplicationTheme  {
-        DetailsView(NewsItemEntity(
-            source =  "CNN",
-            title = "Global Markets Rally as Inflation Slows Down",
-            publishedAt = "2025-07-17T08:30:00Z",
-            imageUrl = ""
-
-        ))
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun DetailsViewPreview() {
+//    MyApplicationTheme  {
+//        DetailsView(NewsItemEntity(
+//            source =  "CNN",
+//            title = "Global Markets Rally as Inflation Slows Down",
+//            publishedAt = "2025-07-17T08:30:00Z",
+//            imageUrl = "",
+//            url = ""
+//        ), navController = )
+//    }
+//}
