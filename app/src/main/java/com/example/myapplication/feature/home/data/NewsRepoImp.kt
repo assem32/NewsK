@@ -11,7 +11,7 @@ import javax.inject.Inject
 class NewsRepoImp @Inject constructor(val remoteDataSource: RemoteDataSource) : INewRepo {
     override suspend fun getNews(): BaseStates<List<NewsItemEntity>> {
         try {
-            val response = remoteDataSource.getNewsData(q = "q", sorted = "publishedAt", date = "2025-06-20")
+            val response = remoteDataSource.getNewsData(q = "q", sorted = "publishedAt", date = "2025-06-21")
             val newsItemList: List<NewsItemEntity> = response.articles.map { it.toNewsItem() }
             return BaseStates.Success(newsItemList)
         }catch (e :Exception){

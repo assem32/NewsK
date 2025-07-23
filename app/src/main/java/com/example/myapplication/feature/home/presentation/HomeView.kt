@@ -25,7 +25,7 @@ fun HomeView(modifier: Modifier=Modifier, homeViewModel: HomeViewModel = hiltVie
     }
     val state = homeViewModel.newsListLiveData.observeAsState().value
     Column (
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ){

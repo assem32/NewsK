@@ -8,15 +8,15 @@ data class Article(
     val description: String,
     val publishedAt: String,
     val source: Source,
-    val title: String,
+    val title: String?,
     val url: String,
     val urlToImage: String?
 )
 
 fun Article.toNewsItem(): NewsItemEntity {
     return NewsItemEntity(
-        title= title,
-        source = source.name,
+        title= title ?: "",
+        source = source.name ?:"",
         imageUrl = urlToImage ?: "",
         publishedAt = publishedAt,
         url = url

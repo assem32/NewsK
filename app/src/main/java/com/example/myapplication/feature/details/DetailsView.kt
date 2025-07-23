@@ -16,6 +16,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -32,9 +33,14 @@ import com.example.myapplication.core.Dimens
 import com.example.myapplication.feature.home.domain.entity.NewsItemEntity
 import com.example.myapplication.feature.home.presentation.HomeViewModel
 import com.example.myapplication.ui.theme.MyApplicationTheme
+import javax.inject.Inject
 
 @Composable
-fun DetailsView(newsItemEntity: NewsItemEntity, homeView :HomeViewModel = hiltViewModel(),navController: NavController){
+fun DetailsView (newsItemEntity: NewsItemEntity, detailsViewModel :DetailsViewModel = hiltViewModel(),navController: NavController){
+    LaunchedEffect(Unit) {
+        detailsViewModel.getSavedNews()
+    }
+
     Column(modifier = Modifier.padding(Dimens.smallPadding)) {
         Row (modifier = Modifier.fillMaxWidth()){
             IconButton(
@@ -52,7 +58,7 @@ fun DetailsView(newsItemEntity: NewsItemEntity, homeView :HomeViewModel = hiltVi
             )
             IconButton(
                 onClick = {
-
+                    detailsViewModel.saveNews(newsItemEntity)
                 }
             ) {
                 Icon(painter = painterResource(id = R.drawable.ic_bookmark), contentDescription = "Save")
