@@ -57,7 +57,7 @@ fun ContentViewScreen(index:Int,navController: NavController,modifier: Modifier=
     when(index){
         0-> HomeView(navController = navController)
         1-> SearchView()
-        2-> SavedView()
+        2-> SavedView(navController = navController)
 
     }
 }

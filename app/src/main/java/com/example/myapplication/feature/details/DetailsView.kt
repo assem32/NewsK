@@ -37,9 +37,6 @@ import javax.inject.Inject
 
 @Composable
 fun DetailsView (newsItemEntity: NewsItemEntity, detailsViewModel :DetailsViewModel = hiltViewModel(),navController: NavController){
-    LaunchedEffect(Unit) {
-        detailsViewModel.getSavedNews()
-    }
 
     Column(modifier = Modifier.padding(Dimens.smallPadding)) {
         Row (modifier = Modifier.fillMaxWidth()){
